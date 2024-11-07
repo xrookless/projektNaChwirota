@@ -1,0 +1,43 @@
+/* Tutaj wspólne (kolor tła, cały header + nav) */
+body {
+    margin: 0;
+    height: 100%;
+    background-color: #6c757d;
+}
+header {
+    width: 100vw;
+    height: 7.5vh;
+    background-color: #212529;
+    position: absolute;
+    display: flex;
+    transition-duration: 0.5s;
+    overflow: hidden;
+}
+header:hover {
+    height: 15vh;
+}
+header:hover .logo {
+    font-size: 15vh;
+}
+.leftContainer {
+    width: 50vw;
+}
+.rightContainer {
+    width: 50vw;
+}
+.logo {
+    color: white;
+    font-size: 7.5vh;
+    transition-duration: 0.5s;
+}
+.accountbar {
+    height: 7.5vh;
+    width: 100%;
+}
+nav {
+    height: 7.5vh;
+    width: 60%;
+    float: right;
+    background-color: #495057;
+    border-top-left-radius: 150px;
+}
