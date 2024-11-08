@@ -1,9 +1,11 @@
 /* Tutaj wspólne (kolor tła, cały header + nav) */
+* {
+    font-family: "Lexend", sans-serif;
+}
 body {
     margin: 0;
     height: 100%;
     background-color: #6c757d;
-    font-family: "Lexend", sans-serif;
     color: #545454;
 }
 
@@ -24,13 +26,10 @@ header:hover {
 
 .leftContainer {
     width: 50vw;
-
 }
 
 .rightContainer {
     width: 50vw;
-
-
 }
 
 .logo {

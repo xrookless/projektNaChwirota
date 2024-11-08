@@ -23,7 +23,7 @@ main {
     color: white;
     font-size: 5vh;
     font-weight: 800;
-
+    text-shadow: 3px 3px #5a189a;
 }   
 .gameContainer {
     display: flex;
@@ -31,6 +31,44 @@ main {
 aside {
     height: 67vh;
     width: 20vw;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+label {
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px #5a189a;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.betBar {
+    background-color: #212529;
+    padding: 10px;
+    border: 1px solid #545454;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+.betInput {
+    width: 250px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+.betInput::-webkit-inner-spin-button,
+.betInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.changeInputBtn {
+    height: 45px;
+    width: 35px;
+    text-align: center;
+}
+.betBtn {
+    width: 250px;
 }
 .display {
     width: 45vw;
@@ -45,5 +83,6 @@ table {
 td {
     width: 100px;
     height: 100px;
+    background-color: gray;
 }
 
