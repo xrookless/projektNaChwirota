@@ -11,7 +11,7 @@ header {
     width: 100vw;
     height: 7.5vh;
     background-color: #0c0c0c;
-    position: absolute;
+    
     display: flex;
     transition-duration: 0.5s;
     overflow: hidden;
@@ -65,7 +65,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     font-weight: 900;
-
+    text-align: center;
 }
 
 svg {
@@ -94,4 +94,17 @@ p:hover{
     display: flex;
     align-items: center;
 
+}
+.main
+{
+   background-color: blue;
+   height: 70vh;
+   margin: 30px;
+   border-radius: 40px;
+}
+.slot
+{
+height: 10vh;
+width: 33%;
+background-color: #0086fc;
 }
