@@ -3,6 +3,7 @@ body {
     margin: 0;
     height: 100%;
     background-color: #6c757d;
+    font-family: "Lexend", sans-serif;
 }
 header {
     width: 100vw;
@@ -12,18 +13,24 @@ header {
     display: flex;
     transition-duration: 0.5s;
     overflow: hidden;
+    
 }
+
 header:hover {
     height: 15vh;
 }
 header:hover .logo {
-    font-size: 15vh;
+    font-size: 10vh;
+   
 }
 .leftContainer {
     width: 50vw;
+    
 }
 .rightContainer {
     width: 50vw;
+   
+    
 }
 .logo {
     color: white;
@@ -32,12 +39,19 @@ header:hover .logo {
 }
 .accountbar {
     height: 7.5vh;
-    width: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    
+    
 }
 nav {
     height: 7.5vh;
     width: 60%;
     float: right;
     background-color: #495057;
-    border-top-left-radius: 150px;
+    
+    -webkit-clip-path: polygon(0 0, 0 0%, 100% 100%, 100% 25%, 75% 0);
+  clip-path: polygon(30% 0, 0 100%, 100% 100%, 100% 25%, 100% 0);
+    
 }
