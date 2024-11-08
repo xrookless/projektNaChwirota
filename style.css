@@ -4,54 +4,94 @@ body {
     height: 100%;
     background-color: #6c757d;
     font-family: "Lexend", sans-serif;
+    color: #545454;
 }
+
 header {
     width: 100vw;
     height: 7.5vh;
-    background-color: #212529;
+    background-color: #0c0c0c;
     position: absolute;
     display: flex;
     transition-duration: 0.5s;
     overflow: hidden;
-    
+
 }
 
 header:hover {
     height: 15vh;
 }
-header:hover .logo {
-    font-size: 10vh;
-   
-}
+
 .leftContainer {
     width: 50vw;
-    
+
 }
+
 .rightContainer {
     width: 50vw;
-   
-    
+
+
 }
+
 .logo {
+    display: flex;
+    align-items: center;
     color: white;
     font-size: 7.5vh;
     transition-duration: 0.5s;
 }
+
 .accountbar {
     height: 7.5vh;
-    width: 60%;
+    width: 40%;
+    float: right;
     display: flex;
-    justify-content: space-between;
-    
-    
+    justify-content: space-around;
+    align-items: center;
+
+
 }
+
 nav {
     height: 7.5vh;
-    width: 60%;
+    width: 65%;
     float: right;
-    background-color: #495057;
-    
+    border-top-left-radius: 600px;
+    background-color: #272727;
     -webkit-clip-path: polygon(0 0, 0 0%, 100% 100%, 100% 25%, 75% 0);
-  clip-path: polygon(30% 0, 0 100%, 100% 100%, 100% 25%, 100% 0);
-    
+    clip-path: polygon(5% 0, 0 100%, 100% 100%, 100% 25%, 100% 0);
+    transition-duration: 0.5s;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 900;
+
+}
+
+svg {
+    stroke: #545454;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+svg:hover {
+    stroke: rgb(123, 44, 191);
+    stroke: linear-gradient(90deg, rgba(123, 44, 191, 1) 0%, rgba(60, 9, 108, 1) 100%, rgba(16, 0, 43, 1) 100%);
+
+}
+p:hover{
+    color: rgb(123,44,191);
+   color: linear-gradient(90deg, rgba(123,44,191,1) 0%, rgba(60,9,108,1) 100%, rgba(16,0,43,1) 100%);
+    cursor: pointer;
+}
+.balance {
+    font-size: 3vh;
+    font-weight: 900;
+    background-color: #272727;
+    padding: 6px;
+    border-radius: 40px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+
 }
