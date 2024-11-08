@@ -11,7 +11,6 @@ header {
     width: 100vw;
     height: 7.5vh;
     background-color: #0c0c0c;
-    
     display: flex;
     transition-duration: 0.5s;
     overflow: hidden;
@@ -37,9 +36,11 @@ header:hover {
     display: flex;
     align-items: center;
     color: white;
-    font-size: 7.5vh;
+    font-size: 6vh;
     transition-duration: 0.5s;
 }
+
+
 
 .accountbar {
     height: 7.5vh;
@@ -79,11 +80,13 @@ svg:hover {
     stroke: linear-gradient(90deg, rgba(123, 44, 191, 1) 0%, rgba(60, 9, 108, 1) 100%, rgba(16, 0, 43, 1) 100%);
 
 }
-p:hover{
-    color: rgb(123,44,191);
-   color: linear-gradient(90deg, rgba(123,44,191,1) 0%, rgba(60,9,108,1) 100%, rgba(16,0,43,1) 100%);
+
+p:hover {
+    color: rgb(123, 44, 191);
+    color: linear-gradient(90deg, rgba(123, 44, 191, 1) 0%, rgba(60, 9, 108, 1) 100%, rgba(16, 0, 43, 1) 100%);
     cursor: pointer;
 }
+
 .balance {
     font-size: 3vh;
     font-weight: 900;
@@ -95,16 +98,135 @@ p:hover{
     align-items: center;
 
 }
-.main
-{
-   background-color: blue;
-   height: 70vh;
-   margin: 30px;
-   border-radius: 40px;
+
+
+
+.main {
+    background-color: #0c0c0c;
+    height: 70vh;
+    margin: 30px;
+    border-radius: 40px;
+    display: flex;
+    padding: 10px;
 }
-.slot
+.roulete
 {
-height: 10vh;
-width: 33%;
-background-color: #0086fc;
+    display: flex;
+    height: 32vh;
+    flex: 100%;
+    background-color: #272727;
+    margin: 10px;
+    border-radius: 40px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+.blackjack , .slot
+{
+    height: 67vh;
+    flex: 33%;
+    background-color: #272727;
+    margin: 10px;
+    border-radius: 40px;
+}
+.more , .minesweeper {
+    height: 32vh;
+    flex: 50%;
+    background-color: #272727;
+    margin: 10px;
+    border-radius: 40px;
+}
+.inside
+{
+    display: flex;
+    flex: 100%;
+    flex-wrap: wrap;
+    
+}
+.insidein
+{
+    display: flex;
+    flex: 100%;
+}
+
+
+
+
+
+
+
+
+:root {
+    --backgroundColor: #272727;
+    --rouletteColor: #545454;
+}
+
+
+.roulette {
+    position: relative;
+    width: 160px;
+    aspect-ratio: 1;
+    background-image:
+        radial-gradient(closest-side, var(--backgroundColor) 44%, var(--rouletteColor) 45% 47%, transparent 48% 61%, var(--rouletteColor) 62% 64%, var(--backgroundColor) 65% 95%, var(--rouletteColor) 96% 97%, var(--backgroundColor) 100%),
+        repeating-conic-gradient(#0c0c0c 0deg 7deg, var(--rouletteColor) 8deg 9deg, rgba(123, 44, 191, 1) 10deg 17deg, var(--rouletteColor) 18deg 19deg, #0c0c0c 20deg);
+    animation: roulette 3s infinite linear;
+    animation-play-state: paused; 
+}
+
+.roulete:hover .roulette {
+    animation-play-state: running; 
+}
+
+@keyframes roulette {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.roulette::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 30%;
+    aspect-ratio: 1;
+    background-image:
+        radial-gradient(var(--rouletteColor) 20%, transparent 21%),
+        linear-gradient(transparent 45%, var(--rouletteColor) 46% 54%, transparent 55%),
+        linear-gradient(90deg, transparent 45%, var(--rouletteColor) 46% 54%, transparent 55%);
+    animation: rouletteCenter 1s infinite linear;
+    animation-play-state: paused; 
+    transform: translate(-50%, -50%);
+}
+
+.roulete:hover .roulette::before {
+    animation-play-state: running; 
+}
+
+@keyframes rouletteCenter {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+.roulette::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 10%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--rouletteColor);
+    transform-origin: 50% 450%;
+    animation: rouletteBall 2s infinite linear;
+    animation-play-state: paused; 
+    transform: translate(-50%, -50%);
+}
+
+.roulete:hover .roulette::after {
+    animation-play-state: running; 
+}
+
+@keyframes rouletteBall {
+    from { transform: translate(-50%, -50%) rotate(0deg) translateY(0%); }
+    to { transform: translate(-50%, -50%) rotate(360deg) translateY(0%); }
 }
