@@ -11,11 +11,11 @@ header {
     width: 100vw;
     height: 7.5vh;
     background-color: #0c0c0c;
-    position: absolute;
+    position: sticky;
+    top: 0;
     display: flex;
     transition-duration: 0.5s;
     overflow: hidden;
-
 }
 
 header:hover {
