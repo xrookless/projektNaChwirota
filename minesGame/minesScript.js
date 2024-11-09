@@ -38,12 +38,12 @@ function tileClick(tileId) {
         return;
     }
     if (mines.includes(tileId)) {
-        document.getElementById(tileId).innerHTML= "bomb";
+        document.getElementById(tileId).innerHTML= "<img src='mine.svg'>";
         hasBet = false;
         betInput.readOnly = false;
-        changeStyle("initial")
+        changeStyle()
     } else {
-        document.getElementById(tileId).innerHTML = "gem";
+        document.getElementById(tileId).innerHTML = "<img src='gem.svg'>";
     }
 }
 
