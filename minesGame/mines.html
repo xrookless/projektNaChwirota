@@ -51,7 +51,7 @@
             </nav>
         </div>
     </header>
-
+                                                                                                <!-- mega syf, wiem, br'y psują wszystko, pozmieniaj żeby było git xd -->
     <div class="mainContainer">
         <main>
             <div class="logobar">MINES</div>
@@ -91,7 +91,7 @@
                         <option value="22">22</option>
                         <option value="23">23</option>
                         <option value="24">24</option>
-                    </select>
+                    </select><br>
                     <button class="betBtn" onclick="gameStart()" id="betBtn">Bet</button><br>
                     <table id="gameInfo">
                         <tr class="trGameInfo">
@@ -103,9 +103,12 @@
                             <td class="tdGameInfo"><input type="number" name="gemsRemaining" id="gemsRemaining" readonly></td>
                         </tr>
                     </table>
-                    <button id="randomTileBtn">Pick Random Tile</button><br>
-                    <button id="cashoutBtn">Cashout</button>
-                    
+                    <label for="profit" id="profitLabel">Profit</label><br>
+                    <input type="number" id="profit" readonly><br>
+                    <button id="randomTileBtn" onclick="randomTile()">Pick Random Tile</button><br>
+                    <button id="cashoutBtn" onclick="cashout()">Cashout</button><br>
+                    <h3 id="gameResult"></h3><br>
+                    <button onclick="changeStyle('initial')" id="playAgainBtn">Play Again</button>
                     
                     
                 </aside>
