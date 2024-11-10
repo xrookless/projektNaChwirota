@@ -13,7 +13,7 @@ main {
     width: 65vw;
     height: 75vh;
     margin-top: 10vh;
-    background-color: #343a40;
+    background-color: #0c0c0c;
     border-radius: 10px;
 }
 .logobar {
@@ -34,29 +34,36 @@ aside {
     width: 20vw;
     padding-left: 50px;
     padding-right: 50px;
+    text-align: center;
 }
 label {
     color: white;
-    font-weight: 600;
-    text-shadow: 1px 1px #5a189a;
+    font-weight: 500;
     font-size: 20px;
     margin-top: 20px;
 }
 .betBar {
-    background-color: #212529;
+    background-color: #272727;
     padding: 10px;
-    border: 1px solid #545454;
-    border-radius: 10px;
+    
+    border-radius: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
+    width: 250px;
+    align-items: center;
 }
 .betInput {
-    width: 250px;
+    width: 100%;
     outline: none;
     background-color: transparent;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 18px; 
+    text-align: left; 
+    padding: 5px;
+    box-sizing: border-box; 
+    overflow: hidden; 
+    white-space: nowrap; 
 }
 .betInput::-webkit-inner-spin-button,
 .betInput::-webkit-outer-spin-button {
@@ -64,13 +71,88 @@ label {
     margin: 0;
 }
 .changeInputBtn {
-    height: 45px;
-    width: 35px;
+    height: 35px;
+    width: 50px; 
     text-align: center;
+    padding: 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #545454; 
+    color: white;
+    border: none;
+    border-radius: 10px; 
+    transition-duration: 0.5s;
+
+}
+.changeInputBtn:hover{
+background-color: rgb(123, 44, 191);
+
+
 }
 .betBtn {
-    width: 250px;
+    width: 150px;
+    border: none;
+    border-radius: 40px;
+    background-color: #272727;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 3vh;
+    margin-top: 20px;
 }
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#minesInput {
+    width: 100%;
+    background-color: #272727;
+    color: white;
+    border: 1px solid #545454;
+    border-radius: 40px;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    padding-right: 30px; 
+    
+}
+select::-webkit-scrollbar {
+    display: none; 
+}
+
+select {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;     
+}
+
+.arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg); 
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    pointer-events: none;
+    transition: transform 0.3s ease; 
+}
+
+
+#minesInput:focus + .arrow {
+    transform: translateY(-50%) rotate(0deg); /* Obracamy strzałkę w dół */
+}
+
+
+
+
 .display {
     width: 45vw;
     height: 67vh;
@@ -82,9 +164,9 @@ table {
     border-spacing: 15px;
 }
 td {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
+    width: 80px;
+    height: 80px;
+    background-color: #272727;
     text-align: center;
     border-radius: 10px;
 }
@@ -93,4 +175,5 @@ img {
     width: auto;
     border-radius: 0;
 }
+
 
