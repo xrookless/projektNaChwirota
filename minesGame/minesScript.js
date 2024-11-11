@@ -66,6 +66,8 @@ function gameStart() {
     minesRemaining.value = minesInput.value;
     gemsNumber = 25 - minesInput.value;
     gemsRemaining.value = gemsNumber;
+    
+    
 
     while(mines.length < minesInput.value) {
                                                                                                                             // Mine Generation
@@ -138,6 +140,7 @@ function changeStyle(style) {
             profit.style.display = "none";
             gameResult.style.display = "none"
             playAgainBtn.style.display = "none";
+
             break;
         case "game":
             minesInput.style.display = "none";

@@ -1,4 +1,4 @@
-                                            /* zoabcz jak to header działa bo tu nie przesówa strony, a i coś w głównym cssie jest rozjebane i psuje tutaj */
+                                  /* zoabcz jak to header działa bo tu nie przesówa strony, a i coś w głównym cssie jest rozjebane i psuje tutaj */
 .mainContainer {
     height: 100vh;
     width: 100%;
@@ -24,7 +24,7 @@ main {
     color: white;
     font-size: 5vh;
     font-weight: 800;
-    text-shadow: 3px 3px #5a189a;
+   
 }   
 .gameContainer {
     display: flex;
@@ -42,6 +42,7 @@ label {
     font-weight: 500;
     font-size: 20px;
     margin-top: 20px;
+    
 }
 .betBar {
     background-color: #272727;
@@ -91,15 +92,21 @@ background-color: rgb(123, 44, 191);
 
 }
 .betBtn {
-    width: 18.5vw;
+    width: 20vw;
     border: none;
     border-radius: 15px;
-    background-color: #272727;
+    background-color: rgba(123, 44, 191, 1);
     color: white;
     padding: 10px;
     
     font-size: 3vh;
     margin-top: 20px;
+    transition-duration: 1s;
+}
+.betBtn:hover{
+    background-color: #272727;
+
+
 }
 
 .select-wrapper {
@@ -157,8 +164,8 @@ select {
     width: 45vw;
     height: 67vh;
     display: flex;
-    justify-content: right;
-    align-items: right;
+    justify-content: center;
+    align-items: center;
     
 }
 table {
@@ -171,6 +178,14 @@ table {
     background-color: #272727;
     text-align: center;
     border-radius: 15px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+td:hover
+{
+    background-color: rgba(123, 44, 191, 1);
+
+
 }
 #gemsRemaining , #minesRemaining{
     background-color: #272727;
@@ -241,9 +256,12 @@ img {
     border-radius: 15px;
     padding: 10px;
     margin-top: 5px;
+    transition-duration: 1s;
+}
+#cashoutBtn:hover, #randomTileBtn:hover{
+    background-color: rgba(123, 44, 191, 1);
     
 }
-
 #cashoutBtn{
 flex: 25%;
 margin-left: 2.5px;
