@@ -99,27 +99,25 @@
 </div>
 
                     <button class="betBtn" onclick="gameStart()" id="betBtn">Bet</button>
-                    <table id="gameInfo">
-                        <tr class="trGameInfo">
-                            <td class="tdGameInfo"><label for="minesRemaining">Mines</label></td>
-                            <td class="tdGameInfo"><label for="gemsRemaining">Gems</label></td>
-                        </tr>
-                        <tr class="trGameInfo">
-                            <td class="tdGameInfo"><input type="number" name="minesRemaining" id="minesRemaining" readonly></td>
-                            <td class="tdGameInfo"><input type="number" name="gemsRemaining" id="gemsRemaining" readonly></td>
-                        </tr>
-                    </table>
+                    <div id="gameInfo">
+                        
+                    <input type="text" name="minesRemaining" id="minesRemaining" readonly>
+                    <input type="text" name="gemsRemaining" id="gemsRemaining" readonly>
+                        
+                    </div><br><br>
                     <label for="profit" id="profitLabel">Profit</label><br>
                     <input type="number" id="profit" readonly><br>
+                    <div class="btns">
                     <button id="randomTileBtn" onclick="randomTile()">Pick Random Tile</button><br>
-                    <button id="cashoutBtn" onclick="cashout()">Cashout</button><br>
+                    <button id="cashoutBtn" onclick="cashout()">Cashout</button>
+                </div>
                     <h3 id="gameResult"></h3><br>
                     <button onclick="changeStyle('initial')" id="playAgainBtn">Play Again</button>
                     
                     
                 </aside>
                 <div class="display">
-                    <table>
+                    <table class="gameTable">
                         <tr>
                             <td id="1" onclick="tileClick(1)"></td>
                             <td id="2" onclick="tileClick(2)"></td>

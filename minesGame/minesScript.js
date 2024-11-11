@@ -97,6 +97,7 @@ function tileClick(tileId) {
         console.log(gemsClicked);
         gemsRemaining.value = gemsNumber;
         document.getElementById(tileId).innerHTML = "<img src='gem.svg'>";
+        document.getElementById(tileId).style.backgroundColor = "#0c0c0c";
         profitLabel.innerHTML = `Profit (x${multiplier[gemsClicked - 1][mines.length - 1]})`;
         profit.value = (betInput.value * multiplier[gemsClicked - 1][mines.length - 1]).toFixed(2);
                                                                                                                             // Game Won 
