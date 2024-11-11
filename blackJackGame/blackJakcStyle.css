@@ -32,7 +32,7 @@ main {
     justify-content: space-around;
 }
 #dealersHand {
-    height: 30vh;
+    height: 25vh;
     background-color: red;
     width: 50vw;
     display: flex;
@@ -43,7 +43,7 @@ main {
     font-weight: bold;
 }
 #playersHand {
-    height: 30vh;
+    height: 35vh;
     background-color: green;
     width: 50vw;
     display: flex;
@@ -52,4 +52,11 @@ main {
     color: white;
     font-size: 10vh;
     font-weight: bold;
+}
+#gameResult {
+    position: absolute;
+    font-size: 15vh;
+    font-weight: 900;   
+    user-select: none;
+    top: 35vh;
 }
