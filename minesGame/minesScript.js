@@ -49,7 +49,7 @@ let gemsNumber;
 let gemsClicked;
 
 function gameStart() {
-
+    arrow.style.display = "none";
     for (i = 0; i < tiles.length; i++) {
         document.getElementById(tiles[i]).innerHTML = "";
     }
