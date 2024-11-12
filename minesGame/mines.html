@@ -52,51 +52,53 @@
         </div>
     </header>
                                                                                                 <!-- mega syf, wiem, br'y psują wszystko, pozmieniaj żeby było git xd -->
-    <div class="mainContainer">
-        <main>
-            <div class="logobar">MINES</div>
-            <div class="gameContainer">
-                <aside>
-                   <label for="betInput">Bet Amount</label>
-                    <div class="betBar">
-                        <input type="number" class="betInput" id="betInput" name="betInput" value="10">
-                        <button class="changeInputBtn" onclick="alterBalanceInput('half')">1/2</button>
-                        <button class="changeInputBtn" onclick="alterBalanceInput('double')">2x</button>
-                        <button class="changeInputBtn" onclick="alterBalanceInput('allin')">All</button>
-                    </div>
-                    <label for="mines" id="minesLabel">Mines</label><br>
+<div class="mainContainer">
+    <main>
+        <div class="logobar">MINES</div>
+        <div class="gameContainer">
+            <aside>
 
- <div class="select-wrapper">
-    <div class="custom-select">
-        <select name="mines" id="minesInput" class="minesInput">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-        </select>
-        <span class="arrow" id="arrow"></span>
-    </div>
-</div>
+                <label for="betInput">Bet Amount</label>
+                <div class="betBar">
+                    <input type="number" class="betInput" id="betInput" name="betInput" value="10">
+                    <button class="changeInputBtn" onclick="alterBalanceInput('double')">2x</button>
+                    <button class="changeInputBtn" onclick="alterBalanceInput('half')">1/2</button>
+                    <button class="changeInputBtn" onclick="alterBalanceInput('allin')">All</button>
+                </div>
+
+                <label for="mines" id="minesLabel">Mines</label><br>
+                <div class="select-wrapper">
+                    <div class="custom-select">
+                        
+                        <select name="mines" id="minesInput" class="minesInput">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                        </select>
+                        <span class="arrow" id="arrow"></span>
+                    </div>
+                </div>
 
                     <button class="betBtn" onclick="gameStart()" id="betBtn">Bet</button>
                     <div id="gameInfo">
@@ -108,53 +110,52 @@
                     <label for="profit" id="profitLabel">Profit</label><br>
                     <input type="number" id="profit" readonly><br>
                     <div class="btns">
-                    <button id="randomTileBtn" onclick="randomTile()">Pick Random Tile</button><br>
-                    <button id="cashoutBtn" onclick="cashout()">Cashout</button>
-                </div>
+                        <button id="randomTileBtn" onclick="randomTile()">Pick Random Tile</button><br>
+                        <button id="cashoutBtn" onclick="cashout()">Cashout</button>
+                    </div>
                     <h3 id="gameResult"></h3><br>
                     <button onclick="changeStyle('initial')" id="playAgainBtn">Play Again</button>
-                    
-                    
-                </aside>
-                <div class="display">
-                    <table class="gameTable">
-                        <tr>
-                            <td id="1" class="td" onclick="tileClick(1)"></td>
-                            <td id="2" class="td" onclick="tileClick(2)"></td>
-                            <td id="3" class="td" onclick="tileClick(3)"></td>
-                            <td id="4" class="td" onclick="tileClick(4)"></td>
-                            <td id="5" class="td" onclick="tileClick(5)"></td>
-                        </tr>
-                        <tr>
-                            <td id="6" class="td" onclick="tileClick(6)"></td>
-                            <td id="7" class="td" onclick="tileClick(7)"></td>
-                            <td id="8" class="td" onclick="tileClick(8)"></td>
-                            <td id="9" class="td" onclick="tileClick(9)"></td>
-                            <td id="10" class="td" onclick="tileClick(10)"></td>
-                        </tr>
-                        <tr>
-                            <td id="11" class="td" onclick="tileClick(11)"></td>
-                            <td id="12" class="td" onclick="tileClick(12)"></td>
-                            <td id="13" class="td" onclick="tileClick(13)"></td>
-                            <td id="14" class="td" onclick="tileClick(14)"></td>
-                            <td id="15" class="td" onclick="tileClick(15)"></td>
-                        </tr>
-                        <tr>
-                            <td id="16" class="td" onclick="tileClick(16)"></td>
-                            <td id="17" class="td" onclick="tileClick(17)"></td>
-                            <td id="18" class="td" onclick="tileClick(18)"></td>
-                            <td id="19" class="td"onclick="tileClick(19)"></td>
-                            <td id="20" class="td" onclick="tileClick(20)"></td>
-                        </tr>
-                        <tr>
-                            <td id="21" class="td" onclick="tileClick(21)"></td>
-                            <td id="22" class="td" onclick="tileClick(22)"></td>
-                            <td id="23" class="td" onclick="tileClick(23)"></td>
-                            <td id="24" class="td" onclick="tileClick(24)"></td>
-                            <td id="25" class="td" onclick="tileClick(25)"></td>
-                        </tr>
-                    </table>
-                </div>
+                       
+            </aside>
+            <div class="display">
+                <table class="gameTable">
+                    <tr>
+                        <td id="1" class="td" onclick="tileClick(1)"></td>
+                        <td id="2" class="td" onclick="tileClick(2)"></td>
+                        <td id="3" class="td" onclick="tileClick(3)"></td>
+                        <td id="4" class="td" onclick="tileClick(4)"></td>
+                        <td id="5" class="td" onclick="tileClick(5)"></td>
+                    </tr>
+                    <tr>
+                        <td id="6" class="td" onclick="tileClick(6)"></td>
+                        <td id="7" class="td" onclick="tileClick(7)"></td>
+                        <td id="8" class="td" onclick="tileClick(8)"></td>
+                        <td id="9" class="td" onclick="tileClick(9)"></td>
+                        <td id="10" class="td" onclick="tileClick(10)"></td>
+                    </tr>
+                    <tr>
+                        <td id="11" class="td" onclick="tileClick(11)"></td>
+                        <td id="12" class="td" onclick="tileClick(12)"></td>
+                        <td id="13" class="td" onclick="tileClick(13)"></td>
+                        <td id="14" class="td" onclick="tileClick(14)"></td>
+                        <td id="15" class="td" onclick="tileClick(15)"></td>
+                    </tr>
+                    <tr>
+                        <td id="16" class="td" onclick="tileClick(16)"></td>
+                        <td id="17" class="td" onclick="tileClick(17)"></td>
+                        <td id="18" class="td" onclick="tileClick(18)"></td>
+                        <td id="19" class="td"onclick="tileClick(19)"></td>
+                        <td id="20" class="td" onclick="tileClick(20)"></td>
+                    </tr>
+                    <tr>
+                        <td id="21" class="td" onclick="tileClick(21)"></td>
+                        <td id="22" class="td" onclick="tileClick(22)"></td>
+                        <td id="23" class="td" onclick="tileClick(23)"></td>
+                        <td id="24" class="td" onclick="tileClick(24)"></td>
+                        <td id="25" class="td" onclick="tileClick(25)"></td>
+                    </tr>
+                </table>
+            </div>
             </div>
         </main>
     </div>

@@ -1,4 +1,3 @@
-const tiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 const minesInput = document.getElementById("minesInput");
 const betInput = document.getElementById("betInput");
 const minesLabel = document.getElementById("minesLabel");
@@ -45,65 +44,66 @@ const multiplier = [
 let hasBet = false;
 let balance = 1000;
 let mines = [];
-let gemsNumber;
-let gemsClicked;
+let gemsClicked = [];
+let totalGemsNumber;
 
 function gameStart() {
     arrow.style.display = "none";
-    for (i = 0; i < tiles.length; i++) {
-        document.getElementById(tiles[i]).innerHTML = "";
+    for (i = 1; i <= 25; i++) {
+        document.getElementById(i).innerHTML = "";
+        document.getElementById(i).style.backgroundColor = "#272727";
+        document.getElementById(i).style.border = "none"
     }
-    if (betInput.value > balance || betInput.value < 0.01) {
+    if (betInput.value > balance || betInput.value < 0.1) {
         return;
     } 
     hasBet = true;
     balance = balance - betInput.value;
     betInput.readOnly = true;
-    gemsClicked = 0;
+    gemsClicked = [];
     profitLabel.innerHTML = "Profit (x1)"
     profit.value = betInput.value;
     changeStyle("game");
     minesRemaining.value = minesInput.value;
-    gemsNumber = 25 - minesInput.value;
-    gemsRemaining.value = gemsNumber;
+    totalGemsNumber = 25 - minesInput.value;
+    gemsRemaining.value = totalGemsNumber;
     
-    
-
     while(mines.length < minesInput.value) {
                                                                                                                             // Mine Generation
         let mineId = Math.floor(Math.random() * 25) + 1;
         if (!mines.includes(mineId)) {
             mines.push(mineId);
-            console.log(mineId);
         }
     }  
 }
 
 function tileClick(tileId) {
     
-
     if (!hasBet) {
+        return;
+    }
+    if (gemsClicked.includes(tileId)) {
         return;
     }
     if (mines.includes(tileId)) {
                                                                                                                             // Mine Clicked
         document.getElementById(tileId).innerHTML= "<img src='mine.svg'>";
+        document.getElementById(tileId).style.border = "5px solid red";
         hasBet = false;
         betInput.readOnly = false;
         mines = [];
         changeStyle("gameLost");
     } else {
                                                                                                                             // Gem Clicked
-        gemsNumber--;
-        gemsClicked++;
-        console.log(gemsClicked);
-        gemsRemaining.value = gemsNumber;
+        totalGemsNumber--;
+        gemsClicked.push(tileId);
+        gemsRemaining.value = totalGemsNumber;
         document.getElementById(tileId).innerHTML = "<img src='gem.svg'>";
         document.getElementById(tileId).style.backgroundColor = "#0c0c0c";
-        profitLabel.innerHTML = `Profit (x${multiplier[gemsClicked - 1][mines.length - 1]})`;
-        profit.value = (betInput.value * multiplier[gemsClicked - 1][mines.length - 1]).toFixed(2);
+        profitLabel.innerHTML = `Profit (x${multiplier[gemsClicked.length - 1][mines.length - 1]})`;
+        profit.value = (betInput.value * multiplier[gemsClicked.length - 1][mines.length - 1]).toFixed(2);
                                                                                                                             // Game Won 
-        if (gemsClicked == 25 - mines.length) {
+        if (gemsClicked.length == 25 - mines.length) {
             cashout();
             changeStyle("gameWon");
         }
