@@ -60,3 +60,14 @@ main {
     user-select: none;
     top: 35vh;
 }
+.cardTotal {
+    position: absolute;
+    font-size: 25px;
+    color: white;
+}
+#dealersCardTotal {
+
+}
+#playersCardTotal {
+
+}

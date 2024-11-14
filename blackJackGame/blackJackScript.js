@@ -43,13 +43,15 @@ const deck = [
 const dealersHandDisplay = document.getElementById("dealersHand");
 const playersHandDisplay = document.getElementById("playersHand");
 const gameResultDisplay = document.getElementById("gameResult");
+const dealersCardTotalDisplay = document.getElementById("dealersCardTotal");
+const playersCardTotalDisplay = document.getElementById("playersCardTotal");
 
-let dealersAces = [];
-let playersAces = [];
 let playedCards = [];
 let hiddenCard;
-let playersHandsValue;
-let dealersHandsValue;
+let playersHandsValue;            
+let playersAceCount;
+let dealersHandsValue;           
+let dealersAceCount;
 
 function draw(target) {
 
@@ -66,29 +68,66 @@ function draw(target) {
 
             switch (target) {
                 case "player":
+
                     playersHandDisplay.innerHTML += cardVisual;
+
                     if (deck[drawnCard].cardValue === "A") {
-                        playersAces.push(drawnCard);
+                        playersAceCount++
                     } else {
-                        playersHandsValue = playersHandsValue + deck[drawnCard].cardValue;
+                        playersHandsValue += deck[drawnCard].cardValue;
                     }
+
+                    playersHandsValue += playersAceCount * 11;
+                    
+
+                    while (playersHandsValue > 21 && playersAceCount > 0) {
+                        playersHandsValue -= 10;
+                        playersAceCount--;
+                    }
+
+                    playersCardTotalDisplay.innerHTML = playersHandsValue;
+
                     break;
+
                 case "dealer":
+
                     dealersHandDisplay.innerHTML += cardVisual;
+
                     if (deck[drawnCard].cardValue === "A") {
-                        dealersAces.push(drawnCard);
+                        dealersAceCount++
                     } else {
-                        dealersHandsValue = dealersHandsValue + deck[drawnCard].cardValue;
+                        dealersHandsValue += deck[drawnCard].cardValue;
                     }
+
+                    dealersHandsValue  += dealersAceCount * 11;
+
+                    while (dealersHandsValue > 21 && dealersAceCount > 0) {
+                        dealersHandsValue -= 10;
+                        dealersAceCount--;
+                    }
+
+                    dealersCardTotalDisplay.innerHTML = dealersHandsValue;
+
                     break;
+
                 case "hidden":
+
                     hiddenCard = drawnCard;
                     dealersHandDisplay.innerHTML += "??";
+
                     if (deck[drawnCard].cardValue === "A") {
-                        dealersAces.push(drawnCard);
+                        dealersAceCount++
                     } else {
-                        dealersHandsValue = dealersHandsValue + deck[drawnCard].cardValue;
+                        dealersHandsValue += deck[drawnCard].cardValue;
                     }
+
+                    dealersHandsValue += dealersAceCount * 11;
+
+                    while (dealersHandsValue > 21 && dealersAceCount > 0) {
+                        dealersHandsValue -= 10;
+                        dealersAceCount--;
+                    }
+                    
                     break;
             }
             hasDrawn = true;
@@ -100,13 +139,12 @@ function start() {
 
     gameResultDisplay.innerHTML = "";
     playedCards = [];
-    playersAces = [];
     playersHandsValue = 0;
+    playersAceCount = 0;
     playersHandDisplay.innerHTML = "";
-    dealersAces = [];
     dealersHandsValue = 0;
+    dealersAceCount = 0;
     dealersHandDisplay.innerHTML = "";
-    dealersTurn = false;
     draw("player");
     draw("dealer");
     draw("player");
@@ -115,11 +153,17 @@ function start() {
 }
 
 function hit() {
-
+    
+    if (playersHandsValue > 21) {
+        return;
+    } 
     draw("player");
-    if (playersHandsValue + playersAces.length > 21) {
-        gameResultDisplay.innerHTML = "You Lost!";
+    if (playersHandsValue == 21) {
+        stand();
     }
+    if (playersHandsValue > 21) {
+        gameResultDisplay.innerHTML = "You Lost!";
+    } 
 
 }
 
@@ -133,13 +177,12 @@ function stand() {
     }
 
     if (dealersHandsValue > 21) {
-        gameResultDisplay.innerHTML = "You Win! Dealer Busted!";
+        gameResultDisplay.innerHTML = "You Won!";
     } else if (dealersHandsValue > playersHandsValue) {
-        gameResultDisplay.innerHTML = "You Lost! Dealer Wins!";
+        gameResultDisplay.innerHTML = "You Lost!";
     } else if (dealersHandsValue < playersHandsValue) {
         gameResultDisplay.innerHTML = "You Win!";
     } else {
         gameResultDisplay.innerHTML = "It's a Tie!";
     }
 }
-
