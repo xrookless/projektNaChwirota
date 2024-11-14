@@ -54,14 +54,82 @@
         <div class="roulette-container">
           <div class="wrap">
             <div class="controller"></div>
-            <button id="startButton">Zagraj</button>
-            <input  id="playerBet" placeholder="jaka liczba"><br>
-            <input type="number" id="moneyBet" placeholder="kaska">
+           
 
 
           </div>
         </div>
       </div>
+       <!--
+"green": [2,3,0,1],
+"red": [18, 19,20,21,10,11,12,13,14,15,16,17],
+
+-->
+      <table>
+        <tr>
+            <td class="green" rowspan="3">0</td>
+            <td class="green">2</td>
+            <td class="black">8</td>
+            <td class="red">18</td>
+            <td class="black">9</td>
+            <td class="red">19</td>
+            <td class="red">20</td>
+            <td class="red">21</td>
+        </tr>
+        <tr>
+            <td class="green">3</td>
+            <td class="black">4</td>
+            <td class="red">10</td>
+            <td class="black">5</td>
+            <td class="red">11</td>
+            <td class="red">12</td>
+            <td class="red">13</td>
+        </tr>
+        <tr>
+            <td class="green">1</td>
+            <td class="black">6</td>
+            <td class="red">14</td>
+            <td class="black">7</td>
+            <td class="red">15</td>
+            <td class="red">16</td>
+            <td class="red">17</td>
+        </tr>
+        <tr>
+            
+            <td colspan="3">red</td>
+            <td colspan="2">green</td>
+            <td colspan="3">black</td>
+        </tr>
+        <tr>
+            <td>odd</td>
+            <td colspan="2">1 to 7</td>
+            <td colspan="2">8 to 14</td>
+            <td colspan="2">14 to 21</td>
+            <td>even</td>
+        </tr>
+        <div style="text-align: center;">
+            <label>Wybierz zakład:
+                <select id="betType">
+                    <option value="number">Numer</option>
+                    <option value="color">Kolor</option>
+                    <option value="parity">Parzyste/Nieparzyste</option>
+                    <option value="range">Zakres</option>
+                </select>
+            </label>
+            <input type="text" id="betValue" placeholder="Wartość zakładu (np. 7, red, odd)">
+            <input type="number" id="betAmount" placeholder="Kwota zakładu">
+            <button id="placeBet">Postaw zakład</button>
+        </div>
+        
+       
+
+
+
+      </table>
+
+
+
+
 
 
     </div>
