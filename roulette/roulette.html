@@ -49,7 +49,13 @@
 
 
 <div class="main">
-
+    <div class="chip_container">
+        <button class="chip" onclick="chipTotal(1)" >1</button>
+        <button class="chip" onclick="chipTotal(5)" >5</button>
+        <button class="chip" onclick="chipTotal(10)" >10</button>
+        <button class="chip" onclick="chipTotal(100)">100</button>
+        <button id="placeBet">postaw zakład</button>
+    </div>
     <div class="roulette">
         <div class="roulette-container">
           <div class="wrap">
@@ -65,67 +71,52 @@
 "red": [18, 19,20,21,10,11,12,13,14,15,16,17],
 
 -->
-      <table>
-        <tr>
-            <td class="green" rowspan="3">0</td>
-            <td class="green">2</td>
-            <td class="black">8</td>
-            <td class="red">18</td>
-            <td class="black">9</td>
-            <td class="red">19</td>
-            <td class="red">20</td>
-            <td class="red">21</td>
-        </tr>
-        <tr>
-            <td class="green">3</td>
-            <td class="black">4</td>
-            <td class="red">10</td>
-            <td class="black">5</td>
-            <td class="red">11</td>
-            <td class="red">12</td>
-            <td class="red">13</td>
-        </tr>
-        <tr>
-            <td class="green">1</td>
-            <td class="black">6</td>
-            <td class="red">14</td>
-            <td class="black">7</td>
-            <td class="red">15</td>
-            <td class="red">16</td>
-            <td class="red">17</td>
-        </tr>
-        <tr>
-            
-            <td colspan="3">red</td>
-            <td colspan="2">green</td>
-            <td colspan="3">black</td>
-        </tr>
-        <tr>
-            <td>odd</td>
-            <td colspan="2">1 to 7</td>
-            <td colspan="2">8 to 14</td>
-            <td colspan="2">14 to 21</td>
-            <td>even</td>
-        </tr>
-        <div style="text-align: center;">
-            <label>Wybierz zakład:
-                <select id="betType">
-                    <option value="number">Numer</option>
-                    <option value="color">Kolor</option>
-                    <option value="parity">Parzyste/Nieparzyste</option>
-                    <option value="range">Zakres</option>
-                </select>
-            </label>
-            <input type="text" id="betValue" placeholder="Wartość zakładu (np. 7, red, odd)">
-            <input type="number" id="betAmount" placeholder="Kwota zakładu">
-            <button id="placeBet">Postaw zakład</button>
-        </div>
-        
-       
 
 
+<table id="betType">
+    <tr>
+        <td value="number" id="0" class="green" onclick="table(0)" rowspan="3">0</td>
+        <td value="number" id="1" class="green" onclick="table(1)">2</td>
+        <td value="number" id="2" class="black" onclick="table(2)">8</td>
+        <td value="number" id="3" class="red" onclick="table(3)">18</td>
+        <td value="number" id="4" class="black" onclick="table(4)">9</td>
+        <td value="number" id="5" class="red" onclick="table(5)">19</td>
+        <td value="number" id="6" class="red" onclick="table(6)">20</td>
+        <td value="number" id="7" class="red" onclick="table(7)">21</td>
+    </tr>
+    <tr>
+        <td value="number" id="8" class="green" onclick="table(8)">3</td>
+        <td value="number" id="9" class="black" onclick="table(9)">4</td>
+        <td value="number" id="10" class="red" onclick="table(10)">10</td>
+        <td value="number" id="11" class="black" onclick="table(11)">5</td>
+        <td value="number" id="12" class="red" onclick="table(12)">11</td>
+        <td value="number" id="13" class="red" onclick="table(13)">12</td>
+        <td value="number" id="14" class="red" onclick="table(14)">13</td>
+    </tr>
+    <tr>
+        <td value="number" id="15" class="green" onclick="table(15)">1</td>
+        <td value="number" id="16" class="black" onclick="table(16)">6</td>
+        <td value="number" id="17" class="red" onclick="table(17)">14</td>
+        <td value="number" id="18" class="black" onclick="table(18)">7</td>
+        <td value="number" id="19" class="red" onclick="table(19)">15</td>
+        <td value="number" id="20" class="red" onclick="table(20)">16</td>
+        <td value="number" id="21" class="red" onclick="table(21)">17</td>
+    </tr>
+    <tr>
+        <td value="color" colspan="3" id="22" onclick="table(22)">red</td>
+        <td value="color" colspan="2" id="23" onclick="table(23)">green</td>
+        <td value="color" colspan="3" id="24" onclick="table(24)">black</td>
+    </tr>
+    <tr>
+        <td value="parity" id="25" onclick="table(25)">odd</td>
+        <td value="range" colspan="2" id="26" onclick="table(26)">1 to 7</td>
+        <td value="range" colspan="2" id="27" onclick="table(27)">8 to 14</td>
+        <td value="range" colspan="2" id="28" onclick="table(28)">14 to 21</td>
+        <td value="parity" id="29" onclick="table(29)">even</td>
+    </tr>
+</table>
 
-      </table>
+</div>
 
 
 

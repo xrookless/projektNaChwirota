@@ -7,7 +7,7 @@
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    var wrap, colors;
+    var wrap;
     var pallete = [
         "r18", "b8", "r19", "g2", "r20", "r21", "b9", "r10",
         "g3", "r11", "b4", "r12", "b5", "r13", "b6",
@@ -25,7 +25,7 @@
 
     // Funkcja do kręcenia ruletką
     function spin_promise(color, number) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             if (
                 (color === "green" || color === "g") && (number >= 0 && number <= 3) ||
                 (color === "black" || color === "b") && (number >= 4 && number <= 9) ||
@@ -103,7 +103,7 @@
     document.getElementById('placeBet').addEventListener('click', function() {
         var betType = document.getElementById('betType').value;
         var betValue = document.getElementById('betValue').value.trim();
-        var betAmount = parseInt(document.getElementById('betAmount').value, 10);
+        var betAmount = totalchip;
 
         if (isNaN(betAmount) || betAmount <= 0) {
             alert("Podaj prawidłową kwotę zakładu.");
@@ -145,3 +145,19 @@
     });
 
 }]);
+let totalchip = 0; 
+function chipTotal(value) {
+    totalchip += value;  
+    
+}
+
+function table(grid){
+    
+  
+    var chip = document.createElement("button");
+    chip.className = "chip";
+    chip.innerHTML = `${totalchip}`
+    document.getElementById(grid).appendChild(chip);
+
+
+}
