@@ -1,13 +1,43 @@
+let totalchip = 0;
+let currentBets = []; // Tablica na różne zakłady
+
+function chipTotal(value) {
+    totalchip += value;
+    console.log(`Dodano ${value}, całkowity zakład: ${totalchip}`);
+}
+
+function table(grid) {
+    var clickedCell = document.getElementById(grid);
+
+    if (clickedCell) {
+        let betType = clickedCell.getAttribute('data-type');
+        let betValue = clickedCell.getAttribute('data-value');
+
+        console.log(`Wybrano: Typ - ${betType}, Wartość - ${betValue}`);
+
+        // Dodaj zakład do listy
+        currentBets.push({ type: betType, value: betValue });
+
+        if (totalchip > 0) {
+            var chip = document.createElement("button");
+            chip.className = "chip";
+            chip.innerHTML = `${totalchip}`;
+            clickedCell.appendChild(chip);
+        } else {
+            alert("Najpierw dodaj żetony!");
+        }
+    }
+}
+
 (function(loader) {
     document.addEventListener("DOMContentLoaded", loader[0], false);
 })([function () {
     "use strict";
 
-    function rand (min, max) {
+    function rand(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    var wrap;
     var pallete = [
         "r18", "b8", "r19", "g2", "r20", "r21", "b9", "r10",
         "g3", "r11", "b4", "r12", "b5", "r13", "b6",
@@ -15,149 +45,111 @@
     ];
 
     var bets = {
-        "green": [2, 3, 0, 1],
+        "green": [0, 2, 3],
         "red": [18, 19, 20, 21, 10, 11, 12, 13, 14, 15, 16, 17],
         "black": [8, 9, 4, 5, 6, 7]
     };
 
-    var width = 80;
-    wrap = document.querySelector('.roulette-container .wrap');
+    var wrap = document.querySelector('.roulette-container .wrap');
 
-    // Funkcja do kręcenia ruletką
     function spin_promise(color, number) {
         return new Promise((resolve) => {
-            if (
-                (color === "green" || color === "g") && (number >= 0 && number <= 3) ||
-                (color === "black" || color === "b") && (number >= 4 && number <= 9) ||
-                (color === "red" || color === "r") && (number >= 10 && number <= 21)
-            ) {
-                let index, pixels, circles, pixelsStart;
-
-                color = color[0];
-                index = pallete.indexOf(color + "" + number);
-                pixels = width * (index + 1);
-                circles = 1760 * 2; //15 circles
-                pixels -= 80;
+            let index = pallete.indexOf(color[0] + number);
+            if (index !== -1) {
+                let pixels = 80 * (index);
                 pixels = rand(pixels + 2, pixels + 79);
-                pixelsStart = pixels;
+                let circles = 1760 * 15; // 15 obrotów
                 pixels += circles;
                 pixels *= -1;
 
-                
-                wrap.style.backgroundPosition = ((pixels + (wrap.offsetWidth / 2)) + "") + "px";
+                wrap.style.backgroundPosition = `${pixels + wrap.offsetWidth / 2}px`;
 
                 setTimeout(() => {
                     wrap.style.transition = "none";
-                    let pos = (((pixels * -1) - circles) * -1) + (wrap.offsetWidth / 2);
-                    wrap.style.backgroundPosition = String(pos) + "px";
+                    wrap.style.backgroundPosition = `${((pixels * -1) - circles) * -1 + wrap.offsetWidth / 2}px`;
                     setTimeout(() => {
                         wrap.style.transition = "background-position 5s";
                         resolve();
                     }, 510);
-
-                }, 5000 + 700);
+                }, 5700);
             }
         });
     }
 
-    // Funkcja losująca kolor i numer
     function play(betType, betValue, betAmount) {
         let color;
+        let bet;
         let r = rand(1, 1000);
-        if (1 <= r && r < 30) color = "green";
-        else if (30 <= r && r < 530) color = "red";
-        else if (530 <= r && r < 1000) color = "black";
 
-        let bet = bets[color][rand(0, bets[color].length)];
+        // Losowanie koloru
+        if (r < 30) color = "green";
+        else if (r < 530) color = "red";
+        else color = "black";
 
-        // Kręcenie ruletką
+        // Losowanie numeru w danym kolorze
+        bet = bets[color][rand(0, bets[color].length)];
+
+        // Wywołanie animacji ruletki
         spin_promise(color, bet).then(() => {
-            let win = false;
+            let winBets = 0; // Liczba wygranych zakładów
+            let winAmount = 0; // Suma wygranej
 
-            // Sprawdzanie wyniku zakładu
-            if (betType === "number" && betValue == bet) {
-                win = true;
-            } else if (betType === "color" && betValue === color) {
-                win = true;
-            } else if (betType === "parity") {
-                if(betValue === "odd" && bet % 2 !== 0) win = true;
-                if(betValue === "even" && bet % 2 === 0) win = true;
+            // Sprawdzanie warunków wygranej dla każdego zakładu
+            currentBets.forEach((currentBet) => {
+                let win = false;
+                if (currentBet.type === "number" && betValue == bet) {
+                    win = true;
+                } else if (currentBet.type === "color" && currentBet.value === color) {
+                    win = true;
+                } else if (currentBet.type === "parity" && ((currentBet.value === "odd" && bet % 2 !== 0) || (currentBet.value === "even" && bet % 2 === 0))) {
+                    win = true;
+                } else if (currentBet.type === "range") {
+                    if ((currentBet.value === "1 to 7" && bet >= 1 && bet <= 7) ||
+                        (currentBet.value === "8 to 14" && bet >= 8 && bet <= 14) ||
+                        (currentBet.value === "15 to 21" && bet >= 15 && bet <= 21)) {
+                        win = true;
+                    }
+                }
 
+                // Jeśli wygrana, zliczamy ją
+                if (win) {
+                    winBets++;
+                    winAmount += betAmount; // Każdy wygrany zakład daje 1x stawkę
+                }
+            });
 
-                win = true;
-            } else if (betType === "range") {
-                if (betValue === "1 to 7" && bet >= 1 && bet <= 7) win = true;
-                if (betValue === "8 to 14" && bet >= 8 && bet <= 14) win = true;
-                if (betValue === "14 to 21" && bet >= 14 && bet <= 21) win = true;
-            }
+            // Mnożenie wygranej przez liczbę wygranych zakładów
+            let totalWin = winAmount * winBets;
 
-            if (win) {
-                alert(`Wygrałeś! Twoja wygrana to: ${betAmount * 2}`);
+            if (winBets > 0) {
+                alert(`Wygrałeś! Wygrana: ${totalWin}\nZakłady: ${winBets} wygranych`);
             } else {
-                alert(`Przegrałeś!`);
+                alert("Przegrałeś!");
             }
+
+            // Odblokowanie przycisku po zakończeniu gry
+            document.getElementById('placeBet').disabled = false;  // Odblokowanie przycisku
         });
     }
 
-    //pobieranie danych z zakładu
     document.getElementById('placeBet').addEventListener('click', function() {
-        var betType = document.getElementById('betType').value;
-        var betValue = document.getElementById('betValue').value.trim();
-        var betAmount = totalchip;
-
-        if (isNaN(betAmount) || betAmount <= 0) {
-            alert("Podaj prawidłową kwotę zakładu.");
+        if (currentBets.length === 0) {
+            alert("Najpierw wybierz pole zakładu.");
             return;
         }
 
-        // Sprawdzanie typu zakładu
-        var isValidBet = false;
-        var betResult = "";
-
-        switch (betType) {
-            case "number":
-                isValidBet = bets["red"].includes(parseInt(betValue)) || bets["black"].includes(parseInt(betValue)) || bets["green"].includes(parseInt(betValue));
-                betResult = `Zakład na numer: ${betValue}`;
-                break;
-            case "color":
-                isValidBet = ["red", "black", "green"].includes(betValue);
-                betResult = `Zakład na kolor: ${betValue}`;
-                break;
-            case "parity":
-                isValidBet = ["odd", "even"].includes(betValue);
-                betResult = `Zakład na parzystość: ${betValue}`;
-                break;
-            case "range":
-                isValidBet = ["1 to 7", "8 to 14", "14 to 21"].includes(betValue);
-                betResult = `Zakład na zakres: ${betValue}`;
-                break;
-            default:
-                alert("Nieprawidłowy typ zakładu.");
-                return;
+        if (totalchip <= 0) {
+            alert("Musisz postawić co najmniej 1 żeton.");
+            return;
         }
 
-        if (isValidBet) {
-            alert(`Postawiłeś ${betAmount} na: ${betResult}`);
-            play(betType, betValue, betAmount);
-        } else {
-            alert("Nieprawidłowy zakład.");
-        }
+        // Zablokowanie przycisku zakładu na czas gry
+        document.getElementById('placeBet').disabled = true; // Blokowanie przycisku
+
+        // Pokazanie alertu przed rozpoczęciem gry
+        alert(`Stawiasz ${totalchip} na: ${currentBets.map(b => `${b.type}: ${b.value}`).join(', ')}`);
+
+        // Rozpoczynamy grę
+        play(currentBets[0].type, currentBets[0].value, totalchip);
     });
-
 }]);
-let totalchip = 0; 
-function chipTotal(value) {
-    totalchip += value;  
-    
-}
-
-function table(grid){
-    
-  
-    var chip = document.createElement("button");
-    chip.className = "chip";
-    chip.innerHTML = `${totalchip}`
-    document.getElementById(grid).appendChild(chip);
-
-
-}
