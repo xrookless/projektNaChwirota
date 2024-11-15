@@ -23,7 +23,6 @@ header {
     display: flex;
     transition-duration: 0.5s;
     overflow: hidden;
-    border-radius: 0px;
     position: sticky;
     top: 0px;
 }
@@ -100,7 +99,6 @@ a:hover {
     color: linear-gradient(90deg, rgba(123, 44, 191, 1) 0%, rgba(60, 9, 108, 1) 100%, rgba(16, 0, 43, 1) 100%);
     cursor: pointer;
 }
-
 .balance {
     font-size: 3vh;
     font-weight: 900;
@@ -110,5 +108,4 @@ a:hover {
     min-width: 100px;
     display: flex;
     align-items: center;
-
 }

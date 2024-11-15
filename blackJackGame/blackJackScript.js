@@ -170,9 +170,9 @@ function hit() {
 function stand() {
     let hiddenCardVisual = deck[hiddenCard].cardValue + deck[hiddenCard].suit + " ";
     dealersHandDisplay.innerHTML = dealersHandDisplay.innerHTML.replace("??", hiddenCardVisual);
-    dealersHandsValue += deck[hiddenCard].cardValue;
+    dealersCardTotalDisplay.innerHTML = dealersHandsValue;
 
-    while (dealersHandsValue < 17) {
+    for (let i = 0; i < 5 && dealersHandsValue < 17; i++) {
         draw("dealer");
     }
 
@@ -180,9 +180,9 @@ function stand() {
         gameResultDisplay.innerHTML = "You Won!";
     } else if (dealersHandsValue > playersHandsValue) {
         gameResultDisplay.innerHTML = "You Lost!";
-    } else if (dealersHandsValue < playersHandsValue) {
-        gameResultDisplay.innerHTML = "You Win!";
+    } else if (playersHandsValue > dealersHandsValue) {
+        gameResultDisplay.innerHTML = "You Won!";
     } else {
-        gameResultDisplay.innerHTML = "It's a Tie!";
+        gameResultDisplay.innerHTML = "Tie!";
     }
 }

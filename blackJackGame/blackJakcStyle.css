@@ -1,73 +1,116 @@
-.mainContainer {
-    height: 100vh;
+.container {
+    height: 92.5vh;
+    margin-top: 7.5vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    background: rgb(152,103,255);
+    background: radial-gradient(circle, rgba(152,103,255,1) 0%, rgba(97,44,255,1) 100%);
+}
+.logoBar {
+    color: white;
+    height: 7.5vh;
+    background-color: #545454;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vh;
+    font-weight: 900;
+    transition-duration: 0.5s;
+}
+.logoBar:hover {
+    text-shadow: 0 0 15px rgb(123, 44, 191);
+}
+.dealersTable {
+    height: 35vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
-    z-index: -1;
 }
-main {
-    background-color: blue;
-    height: 75vh;
-    width: 50vw;
-    border-radius: 0;
+.playersTable {
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.logoBar {
+.actionBar {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.station {
+    margin-top: 20px;
+    height: 35vh;
+    width: 15vw;
     color: white;
+    text-align: center;
+    background-color: hsla(221 100% 0% / 0.5);
+    border-radius: 20px;
+    transition-duration: 0.2s;
+}
+.stationSelected {
+   box-shadow: 0 0 15px white;
+   scale: 1.05;
+}
+h1 {
+    font-weight: 900;
+    margin: 0;
+    font-size: 25px;
+}
+.cardTotal {
+    font-size: 20px;
+    font-weight: 700;
+}
+.cardDisplay {
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.betValue {
     height: 5vh;
-    background-color: aqua;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vh;
+    font-size: 20px;
+    font-weight: 500;
 }
-
-.actionBar {
-    height: 10vh;
+.actionBtn {
+    text-shadow: 0 0 10px black;
+    height: 8vh;
+    width: 8vh;
+    border: 5px solid #272727;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    font-size: 100%;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.actionBtn:hover {
+    scale: 1.05;
+    border-color: #545454;
+}
+.actionBtn:active {
+    border-color: white;
+}
+#hitBtn {
     background-color: greenyellow;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
 }
-#dealersHand {
-    height: 25vh;
+#splitBtn {
+    background-color: yellow;
+}
+#doubleBtn {
+    background-color: orange;
+}
+#standBtn {
     background-color: red;
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-    font-size: 10vh;
-    font-weight: bold;
-}
-#playersHand {
-    height: 35vh;
-    background-color: green;
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-    font-size: 10vh;
-    font-weight: bold;
-}
-#gameResult {
-    position: absolute;
-    font-size: 15vh;
-    font-weight: 900;   
-    user-select: none;
-    top: 35vh;
-}
-.cardTotal {
-    position: absolute;
-    font-size: 25px;
-    color: white;
-}
-#dealersCardTotal {
-
-}
-#playersCardTotal {
-
 }
