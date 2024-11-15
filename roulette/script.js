@@ -15,6 +15,12 @@ function table(grid) {
 
         console.log(`Wybrano: Typ - ${betType}, Wartość - ${betValue}`);
 
+        // Sprawdzanie, czy zakład już istnieje
+        if (currentBets.some(bet => bet.type === betType && bet.value === betValue)) {
+            alert("Zakład na to pole już został postawiony!");
+            return;
+        }
+
         // Dodaj zakład do listy
         currentBets.push({ type: betType, value: betValue });
 
@@ -94,14 +100,19 @@ function table(grid) {
             let winBets = 0; // Liczba wygranych zakładów
             let winAmount = 0; // Suma wygranej
 
+            // Oblicz stawkę na jeden zakład
+            let betPerBet = totalchip / currentBets.length;
+
             // Sprawdzanie warunków wygranej dla każdego zakładu
             currentBets.forEach((currentBet) => {
                 let win = false;
-                if (currentBet.type === "number" && betValue == bet) {
+                if (currentBet.type === "number" && currentBet.value == bet) {
                     win = true;
                 } else if (currentBet.type === "color" && currentBet.value === color) {
                     win = true;
-                } else if (currentBet.type === "parity" && ((currentBet.value === "odd" && bet % 2 !== 0) || (currentBet.value === "even" && bet % 2 === 0))) {
+                } else if (currentBet.type === "parity" && 
+                           ((currentBet.value === "odd" && bet % 2 !== 0) || 
+                            (currentBet.value === "even" && bet % 2 === 0))) {
                     win = true;
                 } else if (currentBet.type === "range") {
                     if ((currentBet.value === "1 to 7" && bet >= 1 && bet <= 7) ||
@@ -114,12 +125,12 @@ function table(grid) {
                 // Jeśli wygrana, zliczamy ją
                 if (win) {
                     winBets++;
-                    winAmount += betAmount; // Każdy wygrany zakład daje 1x stawkę
+                    winAmount += betPerBet;
                 }
             });
 
-            // Mnożenie wygranej przez liczbę wygranych zakładów
-            let totalWin = winAmount * winBets;
+            // Wygrana całkowita
+            let totalWin = winAmount;
 
             if (winBets > 0) {
                 alert(`Wygrałeś! Wygrana: ${totalWin}\nZakłady: ${winBets} wygranych`);
@@ -127,8 +138,11 @@ function table(grid) {
                 alert("Przegrałeś!");
             }
 
+            // Reset zakładów
+            currentBets = [];
+
             // Odblokowanie przycisku po zakończeniu gry
-            document.getElementById('placeBet').disabled = false;  // Odblokowanie przycisku
+            document.getElementById('placeBet').disabled = false;
         });
     }
 
@@ -144,7 +158,7 @@ function table(grid) {
         }
 
         // Zablokowanie przycisku zakładu na czas gry
-        document.getElementById('placeBet').disabled = true; // Blokowanie przycisku
+        document.getElementById('placeBet').disabled = true;
 
         // Pokazanie alertu przed rozpoczęciem gry
         alert(`Stawiasz ${totalchip} na: ${currentBets.map(b => `${b.type}: ${b.value}`).join(', ')}`);

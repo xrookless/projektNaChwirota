@@ -7,8 +7,9 @@ body, html {
 
 .roulette-container {
 	height: 80px;
-	width: 50%;
+	width: 80%;
 	display: block;
+	
 }
 
 .roulette-container .wrap {
@@ -30,15 +31,13 @@ body, html {
   background-color: #fff;
   height: 100%;
   margin: 0 auto;
- 
+	
 }
 .wrap{
-	box-shadow: #272727 inset 5px 5px 20px 10px ;
+	box-shadow:inset 1px 1px 20px 10px  #0c0c0c;
 	border-radius: 10px;
+	border:inline solid 2px #0c0c0c;
 }
-
-
-
 .color-beted {
   display: inline-block;
   padding: 15px 15px;
@@ -57,15 +56,46 @@ body, html {
 .color-beted.g {
   background-color: #5a189a;
 }
-.main{
-background-color: #0c0c0c;
-width: 100%;
-height: 600px;
-display: flex;
-margin-top: 30px;
-justify-content: center;
-align-items: center;
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #0c0c0c;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1200px; /* Ograniczenie szerokości */
+    border-radius: 8px;
+    
 }
+
+.lContainer, .RContainer {
+    flex: 1; /* Równy podział szerokości */
+    padding: 20px;
+    margin: 10px;
+}
+
+.lContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+   
+}
+
+.RContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    
+   
+}
+
+
 .roulette{
 display: flex;
 justify-content: center;
@@ -74,9 +104,7 @@ flex: 100%;
 justify-items: center;
 
 }
-/* "green": [2,3,0,1],
-"red": [18, 19,20,21,10,11,12,13,14,15,16,17],
-"black": [8,9,4,5,6,7]*/
+
 table
 {
 
@@ -85,34 +113,40 @@ border-collapse: collapse;
 	
 }
 .chip_container{
-	height: 80px;
-	background-color: pink;
-	width: 300px;
+	height: 200px;
+	background-color: #272727;
+	width: 450px;
 	display: flex;
 	justify-content: space-around;	
 	align-items: center;
+	float: left;
 }
+
+
+
 .chip {
-    width: 25px;            /* Szerokość chipu */
-    height: 25px;           /* Wysokość chipu */
-    border-radius: 50%;     /* Okrągły kształt */
-    background-color: #3498db; /* Kolor tła chipu (można zmienić) */
-    border: none;           /* Brak obramowania */
-    display: flex;          /* Użycie flexbox do wyrównania zawartości */
-    align-items: center;    /* Wyrównanie zawartości w pionie */
-    justify-content: center;/* Wyrównanie zawartości w poziomie */
-    color: white;           /* Kolor tekstu */
-    font-size: 10px;        /* Rozmiar czcionki */
-    font-weight: bold;
-	transition-duration: 0.5s;    
-	outline: none;
-	
+	position: relative;
+	display: block;
+	margin: 30px auto;
+	width: 75px;
+	height: 75px;
+	border: 13px dashed rgb(203, 203, 203);
+	border-radius: 50%;
+	background-color: rgb(123, 44, 191);
+	box-shadow: 0 0 15px 5px #0c0c0c,  
+	inset 0 0 5px 2px #0c0c0c; 
+	text-align: center;
+	transition: transform 0.3s ease;  
+	color: white;
 }
 .chip:hover{
-	background-color: #5a189a;
+	transform: translateY(-10px);
 
 }
 
+
+  
+  
 td{
 	border-collapse: collapse;
 	border: white solid 2px;
@@ -122,14 +156,14 @@ td{
 }
 
 .black{
-	background-color: #000000;
+	background-color: #0c0c0c;
 }
 .red{
-	background-color: #ff0000;
+	background-color: rgb(123, 44, 191);
 
 }
 .green{
-	background-color: forestgreen;
+	background-color: pink;
 }
 .empty{
 	border: none;
